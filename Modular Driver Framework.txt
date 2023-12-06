@@ -1,0 +1,113 @@
+                          Modular Driver Framework
+-------------------------------------------------------------------------------
+
+It is the approach where all test cases are first analyzed to find out reusable flows...Then scripting,all these reusable flows are created as functions and stored in the external file and called in the test script whenever it is required.to avoid duplicacy work we go for modular framework.
+
+TC1:
+  1. open browser
+  2. Enter Url
+  3. login
+  4. click product link
+  5. logout
+  6. close
+TC2:
+  1. open browser
+  2. Enter url
+  3. login
+  4. click on categories
+  5. logout
+  6. close
+TC3:
+  1. open browser
+  2. Register
+  3. login
+  4. click on manfactures link
+  5. logout
+  6. close
+
+
+Reusablemethods:
+---------------
+
+
+package modularDrivernFramework;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class CommonSteps {
+
+	ChromeDriver driver;
+	
+	public WebDriver openBrowser() {
+		driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		return driver;
+	}
+	
+	public void EnterUrl() {
+		driver.get("https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F");
+	}
+	
+	public void login() {
+		driver.findElement(By.name("Email")).clear();
+        driver.findElement(By.name("Email")).sendKeys("admin@yourstore.com");
+        driver.findElement(By.name("Password")).clear();
+		driver.findElement(By.name("Password")).sendKeys("admin");
+		driver.findElement(By.className("login-button")).click();
+	}
+	
+	public void logout() {
+		driver.findElement(By.xpath("//a[@href=\"/logout\"]")).click();
+	}
+	
+	public void closeBrowser() {
+		driver.close();
+	}
+}
+
+
+
+package modularDrivernFramework;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
+
+public class ProductsPage {
+	
+	WebDriver driver;
+	CommonSteps cs=new CommonSteps();
+	@Test
+	public void clickonProductLink() throws InterruptedException {
+		
+	  driver= cs.openBrowser();
+	   cs.EnterUrl();
+	   cs.login();
+	   driver.findElement(By.xpath("//i[@class=\"nav-icon fas fa-book\"]")).click();
+	   driver.findElement(By.xpath("//a[@href=\"/Admin/Product/List\"]")).click();
+	  Thread.sleep(2000);
+	   cs.logout();
+	   cs.closeBrowser();
+	}
+	
+	@Test
+	public void verifyProductSearch() throws InterruptedException {
+		
+	  driver= cs.openBrowser();
+	   cs.EnterUrl();
+	   cs.login();
+	   driver.findElement(By.xpath("//i[@class=\"nav-icon fas fa-book\"]")).click();
+	   driver.findElement(By.xpath("//a[@href=\"/Admin/Product/List\"]")).click();
+	  Thread.sleep(2000);
+	  driver.findElement(By.id("SearchProductName")).sendKeys("Adobe Photoshop CS4");
+	  driver.findElement(By.id("search-products")).click();
+	  
+	   cs.logout();
+	   cs.closeBrowser();
+	}
+	
+	
+
+}
