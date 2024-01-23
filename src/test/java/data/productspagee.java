@@ -1,7 +1,10 @@
 package data;
 
+import java.util.ArrayList;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
 public class productspagee {
@@ -10,9 +13,9 @@ public class productspagee {
 	WebDriver driver;
 	CommonSteps cs=new CommonSteps();
 	@Test
-	public void clickonProductLink() throws InterruptedException {
+	public void verifyProductlink() throws InterruptedException {
 		
-	  driver= cs.openBrowser();
+	   driver=cs.openBrowser();
 	   cs.EnterUrl();
 	   cs.login();
 	   driver.findElement(By.xpath("//i[@class=\"nav-icon fas fa-book\"]")).click();
@@ -36,6 +39,15 @@ public class productspagee {
 	  
 	   cs.logout();
 	   cs.closeBrowser();
+	   
 	}
-	
+	@Test
+	public void verifyAddButton() {
+		driver= cs.openBrowser();
+		   cs.EnterUrl();
+		   cs.login();
+
+		   cs.logout();
+		   cs.closeBrowser();
+	}
 }

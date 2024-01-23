@@ -1,0 +1,32 @@
+How to Take screen shot in selenium
+-------------------------------------
+what is the use of screenshot----for keepin as proof
+whether the testscript passed or failed -----definatley we need to take screen shot
+Step need to fallow to take screen shot
+----------------------------------------
+1.apachecommonio --jar file which u need to add in u r project
+    googlesearch type as "maven repostoiry"
+    --click on the first link----search box type as "apachecommon io"
+    ->click on the first link--select any recent version---File row ---click on jar file--downloaded
+    -->import it in to u r project 
+     click on bulidpath--click on configuer path--select --click on libraries--click on the classpath--click on    add external jar---browser the commonio.jar --click on open--then click on apply close
+
+code
+-------
+	   
+	   File src =((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	    FileUtils.copyFile(src, new File("D:\\ScreenShots\\loginsucess.png"));
+	
+
+Explanation for screenshot
+--------------------------
+1.((TakesScreenshot)driver)---typecasting---
+2.getScreenshotAs(OutputType.file)----it is method which is used to take screenshot
+3.OutputType.file----it is parameter in which format you want to store the images to specify using these
+4.TakeScreenShot is interface which consist of a method called "getScreenshotAs()"
+5.FileUtils--is class which importing from packege called as "apachecommon io"
+6.copyFile()---is a method which is used to copy from one palce to another place
+
+
+
+

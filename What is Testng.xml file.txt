@@ -1,0 +1,76 @@
+What is Testng.xml file?
+
+Testng.xml file is a configuration file (XML file) for TestNG in which we can create test suites,mark tests for parallel execution, add listeners, and pass parameters and we run multipe class at time using tesng xml file
+
+xml---Extensible Markup Language--user defined tags can be created
+hmtl---Hypertext Markup Language-----predefined tags
+
+
+
+<testsuiet>----collection of test tags is called test suiet
+    <test>------collection of classes tags
+       <classes>---collection of class tag
+                <class>---collection of methods is called as class
+                    <method></method>
+                   <include/>
+                    <exclued>
+                      <method></method>                       
+                </class>
+                <class>
+                    <method></method>
+                      <method></method>                       
+                </class>
+                <class>
+                    <method></method>
+                      <method></method>                      
+                </class>
+          </classes>
+   </test>
+</testsuiet>
+
+
+
+
+
+
+</tesuiet >
+	<test  name="test1">
+		<classes>
+   				<class  "data\Attribuets.java"></class>
+   				<class  "data\demo.java"></class>
+              </classes>
+         </test>
+      <test  name="test2">
+           <classes>
+                                <class  "data\Hirec.java"></class>
+   				<class  "data\login.java">
+					<include methodname="verifyWithValidlogin.java">										
+                                </class>
+   			        <class  "data\priorityDemo.java">
+                               <include method="E">
+                                <include method="A">
+                                  </class>
+           </casses>
+       </test>
+</tesuiet>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
